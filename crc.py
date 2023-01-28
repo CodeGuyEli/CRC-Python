@@ -17,6 +17,7 @@ def start():
     if respond.lower.startswith(y):
         file = input("Enter the filename:")
         load(file)
+	print("Hello, %s" % (RespondDict["Name"]))
 def train():
     global say
     respond = input("I didn't understand. What should I say next time?")
@@ -24,7 +25,10 @@ def train():
 def ask():
     global say
     say = input("What would you like to say?")
-    if say == "Bye!":
+   if say == "Change my name":
+	name = input("Enter your name")
+	RespondDict["Name"] = name
+ if say == "Bye!":
         check = input("Would you like to save? y or n?")
         if check == "y":
             file = input("Name?")
@@ -35,5 +39,6 @@ def ask():
         print(RespondDict[say])
     else:
         train()
+start()
 while True:
     ask()
